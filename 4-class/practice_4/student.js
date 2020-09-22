@@ -8,6 +8,8 @@ export default class Student extends Person {
   }
 
   introduce() {
-    return `${super.introduce()} I am a Student. I am at Class ${this.klass}.`;
+    const { klass } = this;
+    const personIntroduce = super.introduce();
+    return `${personIntroduce} I am a Student. I am at Class ${klass}.`;
   }
 }

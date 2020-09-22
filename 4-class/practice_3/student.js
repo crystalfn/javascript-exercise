@@ -8,6 +8,7 @@ export default class Student extends Person {
   }
 
   introduce() {
-    return `I am a Student. I am at Class ${this.klass}.`;
+    const { klass } = this;
+    return `I am a Student. I am at Class ${klass}.`;
   }
 }

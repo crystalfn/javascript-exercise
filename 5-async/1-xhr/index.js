@@ -5,15 +5,16 @@ function fetchData(url, successCallback, errorCallback) {
   xhr.open('GET', url);
   xhr.send();
   xhr.onreadystatechange = () => {
-    if (xhr.readyState !== 4) {
-      return;
-    }
-    if (xhr.status === 200) {
-      successCallback(xhr.responseText);
-    } else {
-      errorCallback(xhr.statusText);
+    if (xhr.readyState === 4) {
+      if (xhr.status === 200) {
+        successCallback(xhr.responseText);
+      } else {
+        errorCallback(xhr.statusText);
+      }
     }
   };
+
+  xhr.onerror = () => errorCallback('xhr request error');
   // end -->
 }
 

@@ -6,15 +6,15 @@ function fetchData(url) {
     xhr.open('GET', url);
     xhr.send();
     xhr.onreadystatechange = () => {
-      if (xhr.readyState !== 4) {
-        return;
-      }
-      if (xhr.status === 200) {
-        resolve(xhr.responseText);
-      } else {
-        reject(xhr.statusText);
+      if (xhr.readyState === 4) {
+        if (xhr.status === 200) {
+          resolve(xhr.responseText);
+        } else {
+          reject(xhr.statusText);
+        }
       }
     };
+    xhr.onerror = () => reject(new Error('xhr request error'));
     // end -->
   });
 }
